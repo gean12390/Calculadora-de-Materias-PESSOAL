@@ -98,7 +98,7 @@ function calcular() {
 
     } else if (select === AL) {
         document.getElementById('ipi').value = `${IPI_2.toFixed(2)}`
-        document.getElementById('icms').value = `${ICMS_NORMAL}`
+        document.getElementById('icms').value = `${ICMS_NORMAL.toFixed(2)}`
         document.getElementById('pis').value = `${PIS_NORMAL.toFixed(2)}`
         document.getElementById('cofins').value = `${COFINS_NORMAL.toFixed(2)}`
         document.getElementById('ncm').value = `${NCM_J}`
