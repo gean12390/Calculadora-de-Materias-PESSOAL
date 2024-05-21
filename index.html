@@ -34,16 +34,33 @@
         <option value="O" id="O">O</option>
     </select>
 
-    <label>Peso:<input type="number" placeholder="PESO TOTAL" id="peso"></label>
     <input type="button" value="CALCULAR" onclick="calcular()">
+
     <br>
     <br>
     <br>
+
+    <label>Peso MATERIAL: <input type="number" placeholder="PESO MATERIAL(PC/KG)" id="peso_mate"></label>
+    <label>Peso/UNIDADE: <input type="number" placeholder="PESO/UNIDADE (PC/KG)" id="peso_unid"></label>
+    <label>Peso TOTAL: <input type="number" placeholder="TOTAL S/IPI" id="peso_total"></label>
+
+    <br>
+    <br>
+    <br>
+
+    <label>TOTAL: <input type="number" placeholder="PESO + IPI" id="total"></label>
     <label>IPI:<input type="text" id="ipi" placeholder="3.25%" readonly></label>
-    <label>ICMS:<input type="text" id="icms"  placeholder="18%/12%" readonly></label>
-    <label>PIS:<input type="text" id="pis"  placeholder="0.65%" readonly></label>
-    <label>COFINS:<input type="text" id="cofins"  placeholder="3%" readonly></label>
+    <label>ICMS:<input type="text" id="icms" placeholder="18%/12%" readonly></label>
+
+    <br>
+    <br>
+    <br>
+
+    <label>REDUÇÃO PIS/COFINS: <input type="number" placeholder="PESO - ICMS" id="reducao"></label>
+    <label>PIS:<input type="text" id="pis" placeholder="0.65%" readonly></label>
+    <label>COFINS:<input type="text" id="cofins" placeholder="3%" readonly></label>
     <label>NCM:<input type="text" id="ncm" placeholder="Numero NCM" readonly></label>
+
     <script src="script.js"></script>
 </body>
 
