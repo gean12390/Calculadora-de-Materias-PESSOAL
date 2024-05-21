@@ -6,7 +6,11 @@ function calcular() {
     let FCP = document.getElementById('FCP').value;
     let AL = document.getElementById('AL').value;
     let REDU = document.getElementById('REDU').value;
-    let peso = document.getElementById('peso').value;
+    let peso_total = document.getElementById('peso_total').value;
+    let peso_mate = document.getElementById('peso_mate').value;
+    let peso_unid = document.getElementById('peso_unid').value;
+    let reducao = document.getElementById('reducao').value;
+    let total = document.getElementById('total').value;
     let NCM = document.getElementById('NCM').value;
     let A = document.getElementById('A').value;
     let B = document.getElementById('B').value;
@@ -23,29 +27,33 @@ function calcular() {
     let N = document.getElementById('N').value;
     let O = document.getElementById('O').value;
 
-
+    // PESO MATERIAL * PESO/UNID
+    peso_total = (peso_mate * peso_unid);
+    
 
     // IPI
     let IPI_1 = 0;
-    let IPI_2 = (peso * 0.0325);
+    let IPI_2 = (peso_total * 0.0325);
+
+    total = (peso_total + IPI_2);
 
 
     // ICMS NORMAL
-    let ICMS_NORMAL = (peso * 0.18);
+    let ICMS_NORMAL = (peso_total * 0.18);
     // REDUÇÃO ICMS PIS/COFINS (18%)
-    let RICM_PC_NORMAL = (peso - ICMS_NORMAL);
+    let RICM_PC_NORMAL = (peso_total - ICMS_NORMAL);
 
 
     // ICMS FORA DO ESTADO (12%)
-    let ICMS_FCP = (peso * 0.12);
-    let RICM_PC_FCP = (peso - ICMS_FCP);
+    let ICMS_FCP = (peso_total * 0.12);
+    let RICM_PC_FCP = (peso_total - ICMS_FCP);
 
 
     // ICMS REDUÇÃO (33,33%)
-    let ICMS_REDU_CNT1 = (peso * 0.3333);
-    let ICMS_REDU_CNT2 = (peso - ICMS_REDU_CNT1);
+    let ICMS_REDU_CNT1 = (peso_total * 0.3333);
+    let ICMS_REDU_CNT2 = (peso_total - ICMS_REDU_CNT1);
     let ICMS_REDU_RESUL = (ICMS_REDU_CNT2 * 0.18);
-    let RICM_PC_REDU = (peso - ICMS_REDU_RESUL);
+    let RICM_PC_REDU = (peso_total - ICMS_REDU_RESUL);
 
     //PIS
     let PIS_NORMAL = (RICM_PC_NORMAL * 0.0065);
@@ -79,14 +87,15 @@ function calcular() {
 
 
 
-
     if (select === SIP) {
         document.getElementById('ipi').value = `${IPI_1}`;
         document.getElementById('icms').value = `${ICMS_NORMAL.toFixed(2)}`
         document.getElementById('pis').value = `${PIS_NORMAL.toFixed(2)}`
         document.getElementById('cofins').value = `${COFINS_NORMAL.toFixed(2)}`
         document.getElementById('ncm').value = `${NCM_I}`
-
+        document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
+        document.getElementById('total').value = `${peso_total.toFixed(2)}`
+        document.getElementById('reducao').value = `${RICM_PC_NORMAL.toFixed(2)}`
 
 
     } else if (select === FCP) {
@@ -94,6 +103,9 @@ function calcular() {
         document.getElementById('icms').value = `${ICMS_FCP.toFixed(2)}`
         document.getElementById('pis').value = `${PIS_FCP.toFixed(2)}`
         document.getElementById('cofins').value = `${COFINS_FCP.toFixed(2)}`
+        document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
+        document.getElementById('total').value = `${total.toFixed(2)}`
+        document.getElementById('reducao').value = `${RICM_PC_FCP.toFixed(2)}`
 
 
     } else if (select === AL) {
@@ -102,13 +114,19 @@ function calcular() {
         document.getElementById('pis').value = `${PIS_NORMAL.toFixed(2)}`
         document.getElementById('cofins').value = `${COFINS_NORMAL.toFixed(2)}`
         document.getElementById('ncm').value = `${NCM_J}`
-
+        document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
+        document.getElementById('total').value = `${total.toFixed(2)}`
+        document.getElementById('reducao').value = `${RICM_PC_NORMAL.toFixed(2)}`
+        
 
     } else if (select === REDU) {
         document.getElementById('ipi').value = `${IPI_2.toFixed(2)}`
         document.getElementById('icms').value = `${ICMS_REDU_RESUL.toFixed(2)}`
         document.getElementById('pis').value = `${PIS_REDU.toFixed(2)}`
         document.getElementById('cofins').value = `${COFINS_REDU.toFixed(2)}`
+        document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
+        document.getElementById('total').value = `${total.toFixed(2)}`
+        document.getElementById('reducao').value = `${RICM_PC_REDU.toFixed(2)}`
     }
 
 
