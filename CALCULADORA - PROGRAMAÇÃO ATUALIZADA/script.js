@@ -106,11 +106,7 @@ function calcular() {
     let NCM_O = 78011011;
 
 
-      
-    
-
-
-
+    // SAIDA
     if (select === SIP) {
        document.getElementById('ipi').value = IPI[0];
         document.getElementById('icms').value = ICMS_DE_TODOS[0].toFixed(2);
