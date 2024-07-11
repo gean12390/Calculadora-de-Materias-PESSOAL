@@ -86,7 +86,7 @@ function calcular() {
 
 
 
-
+    // SAÍDA
     if (select === SIP) {
         document.getElementById('ipi').value = `${IPI_1}`;
         document.getElementById('icms').value = `${ICMS_NORMAL.toFixed(2)}`
@@ -130,6 +130,7 @@ function calcular() {
     }
 
 
+    // NCM
     switch (NCM) {
         case A:
             document.getElementById('ncm').value = `${NCM_A}`
@@ -203,5 +204,15 @@ function calcular() {
         default:
             break;
     }
+    
+}
+function copiar_ncm() {
+    let copiar = document.getElementById('ncm');
+
+    // Seleciona o texto dentro do input
+    copiar.select();
+
+    // Verifica se a seleção foi bem-sucedida
+     document.execCommand('copy');
 
 }
