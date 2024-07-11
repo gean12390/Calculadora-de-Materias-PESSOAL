@@ -10,6 +10,9 @@
         body{
             margin: 20px;
         }
+        #ncm::selection{
+            background-color: transparent;
+        }
     </style>
 </head>
 
@@ -68,7 +71,8 @@
     <label>REDUÇÃO PIS/COFINS: <input type="number" placeholder="PESO - ICMS" id="reducao" readonly></label>
     <label>PIS:<input type="text" id="pis" placeholder="0.65%" readonly></label>
     <label>COFINS:<input type="text" id="cofins" placeholder="3%" readonly></label>
-    <label>NCM:<input type="text" id="ncm" placeholder="Numero NCM" readonly></label>
+    <label>NCM:<input type="text" id="ncm" placeholder="Numero NCM" readonly> 
+    <input type="button"  value="Copiar" onclick="copiar_ncm()"></label>
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
