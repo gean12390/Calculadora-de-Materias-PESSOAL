@@ -65,7 +65,8 @@ function calcular() {
     let COFINS_FCP = (RICM_PC_FCP * 0.03);
     let COFINS_REDU = (RICM_PC_REDU * 0.03);
 
-    
+    // REDUÇÃO DE ICMS
+     
 
 
     // NCM
@@ -96,6 +97,7 @@ function calcular() {
         document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
         document.getElementById('total').value = `${peso_total.toFixed(2)}`
         document.getElementById('reducao').value = `${RICM_PC_NORMAL.toFixed(2)}`
+        document.getElementById('b_icms_redu').innerHTML = ' '
 
 
     } else if (select === FCP) {
@@ -106,7 +108,7 @@ function calcular() {
         document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
         document.getElementById('total').value = `${total.toFixed(2)}`
         document.getElementById('reducao').value = `${RICM_PC_FCP.toFixed(2)}`
-
+        document.getElementById('b_icms_redu').innerHTML = ' '
 
     } else if (select === AL) {
         document.getElementById('ipi').value = `${IPI_2.toFixed(2)}`
@@ -117,7 +119,8 @@ function calcular() {
         document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
         document.getElementById('total').value = `${total.toFixed(2)}`
         document.getElementById('reducao').value = `${RICM_PC_NORMAL.toFixed(2)}`
-        
+        document.getElementById('b_icms_redu').innerHTML = ' '
+
 
     } else if (select === REDU) {
         document.getElementById('ipi').value = `${IPI_2.toFixed(2)}`
@@ -127,6 +130,9 @@ function calcular() {
         document.getElementById('peso_total').value = `${peso_total.toFixed(2)}`
         document.getElementById('total').value = `${total.toFixed(2)}`
         document.getElementById('reducao').value = `${RICM_PC_REDU.toFixed(2)}`
+        document.getElementById('b_icms_redu').innerHTML = '<br><br><label>BASE CALCULO ICMS<input type="text" id="b_icms_redu_1" readonly></label>'
+        document.getElementById('b_icms_redu_1').value = `${ICMS_REDU_CNT2.toFixed(2)}`
+         
     }
 
 
@@ -216,3 +222,12 @@ function copiar_ncm() {
      document.execCommand('copy');
 
 }
+
+// LIMPAR 
+
+let limpar = document.getElementById('limpar')
+
+
+limpar.addEventListener('click', function(){
+    document.getElementById('b_icms_redu').innerHTML = ' '
+});
