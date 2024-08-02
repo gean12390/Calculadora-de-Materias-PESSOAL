@@ -231,3 +231,20 @@ let limpar = document.getElementById('limpar')
 limpar.addEventListener('click', function(){
     document.getElementById('b_icms_redu').innerHTML = ' '
 });
+
+
+let i = 2;
+document.getElementById('botao').addEventListener('click', function(){
+
+   if(i == 1){  
+       document.getElementById('tabela').innerHTML = " ";
+       document.getElementById('botao').value = "ABRIR";
+       i++;
+   } else if(i == 2){
+       document.getElementById('tabela').innerHTML = "<td><strong>LETRA</strong></td><td><strong>CATEGORIA</strong></td></tr><tr><td><strong>A</strong></td><td>BUCHA BRONZE</td></tr><tr><td><strong>B</strong></td><td>TARUGO DE BRONZE</td></tr><tr><td><strong>C</strong></td><td>BARRA LATAO</td></tr><tr><td><strong>D</strong></td><td>CHAPA LATAO</td></tr><tr><td><strong>F</strong></td><td>BARRA COBRE</td></tr><tr><td><strong>G</strong></td><td>CHAPA COBRE</td></tr><tr><td><strong>H</strong></td><td>TUBO COBRE</td></tr><tr><td><strong>I</strong></td><td>BARRA ALUMINIO</td></tr><tr><td><strong>J</strong></td><td>CHAPA ALUMINIO</td></tr><tr><td><strong>L</strong></td><td>TARUGO ALUMINIO</td></tr><tr><td><strong>K</strong></td><td>TUBO ALUMINIO</td></tr><tr><td><strong>M</strong></td><td>CHAPA INOX</td></tr><tr><td><strong>N</strong></td><td>BARRA INOX</td></tr><tr><td><strong>O</strong></td><td>CHUMBO BRIDGESTONE</td>";
+       document.getElementById('botao').value = 'ESCONDER';
+
+       i--;
+   }
+
+});
