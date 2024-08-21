@@ -235,7 +235,7 @@ limpar.addEventListener('click', function(){
 
 let i = true;
 document.getElementById('botao').addEventListener('click', function(){
-
+    i = !i; //alterna o valor entre verdadiro e falso
    if(i == false){  
        document.getElementById('tabela').innerHTML = " ";
        let tabela = document.getElementById('botao').value = "ABRIR";
@@ -244,5 +244,4 @@ document.getElementById('botao').addEventListener('click', function(){
        document.getElementById('botao').value = 'ESCONDER';
 
    }
-    i = !i; //alterna o valor entre verdadiro e falso
 });
