@@ -233,7 +233,7 @@ limpar.addEventListener('click', function(){
 });
 
 
-let i = true;
+let i = false;
 document.getElementById('botao').addEventListener('click', function(){
     i = !i; //alterna o valor entre verdadiro e falso
    if(i == false){  
