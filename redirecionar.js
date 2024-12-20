@@ -1,4 +1,3 @@
-export{redirecionar}
 
 function detectarDispositivo() {
     const usuarioAgent = navigator.userAgent.toLowerCase();
