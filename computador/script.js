@@ -1,10 +1,4 @@
 import {copiar_ncm} from './ncm.js'
-import {redirecionar} from './redirecionar.js'
-
-for(let ver= 0; ver <= 0; ver++){
-    redirecionar();
-}
-
 
 let soma = 0;
 
