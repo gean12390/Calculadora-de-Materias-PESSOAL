@@ -1,5 +1,7 @@
 import {copiar_ncm} from './ncm.js'
+import {redirecionar} from './redirecionar.js'
 
+redirecionar();
 
 let soma = 0;
 
