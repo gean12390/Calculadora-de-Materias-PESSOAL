@@ -14,9 +14,9 @@ function redirecionar() {
     const dispositivo = detectarDispositivo();
     
     if (dispositivo === 'celular') {
-        window.location.href = 'https://gean12390.github.io/calculadora-de-materias-PESSOAL-/antigo/'; // Link para celular
+        window.location.href = 'https://gean12390.github.io/Calculadora-de-Materias-PESSOAL/antigo/'; // Link para celular
     } else {
-        window.location.href = 'https://gean12390.github.io/calculadora-de-materias-PESSOAL-/computador/'; // Link para computador
+        window.location.href = 'https://gean12390.github.io/Calculadora-de-Materias-PESSOAL/computador/'; // Link para computador
     }
 }
 
