@@ -104,7 +104,7 @@ let limpar = document.getElementById('limpar');
 
 
 limpar.addEventListener('click', () => {
-    document.getElementById('b_icms_redu').innerHTML = ' ';
+    window.location.reload();
 
 });
 limpar.addEventListener('dblclick', () => {
