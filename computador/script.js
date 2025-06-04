@@ -1,5 +1,11 @@
 import { copiar_ncm } from './ncm.js'
 
+    let seletor = document.getElementById("select")
+    let sIpi = 0;
+    let _Ipi = 0;
+    let _Icms = 0;
+    let j = 0;
+
 //Quando Clicado TAB e esteja no COD. DO MATERIAL, pula direto para o PESO DO MATERIAL
 document.addEventListener('keydown', (event) => {
     if (document.activeElement.id === 'select' && event.key === 'Tab') {
@@ -128,11 +134,6 @@ limpar.addEventListener('click', () => {
 
 });
 
-    let seletor = document.getElementById("select")
-    let sIpi = 0;
-    let _Ipi = 0;
-    let _Icms = 0;
-    let j = 0;
 
 
 function calcular_final() {
@@ -191,7 +192,7 @@ function calcular_final() {
 
 document.getElementById('_calc').addEventListener('click', () => {
     if (abrir) {
-        document.getElementById('calc_total').style.display = "block";
+        document.getElementById('calc_total').style.display = "inli";
         document.getElementById('_calc').value = "FECHAR";
     } else {
         document.getElementById('calc_total').style.display = "none";
