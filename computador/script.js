@@ -187,15 +187,15 @@ function calcular_final() {
 
 }
 
- let abrir = true;
+ let abrir = false;
 
-    document.getElementById('_calc').addEventListener('click', () => {
-    if(abrir == false){
+document.getElementById('_calc').addEventListener('click', () => {
+    if (abrir) {
         document.getElementById('calc_total').style.display = "block";
-        document.getElementById('_calc').value = "FECHAR"
-    } else{
+        document.getElementById('_calc').value = "FECHAR";
+    } else {
         document.getElementById('calc_total').style.display = "none";
-        document.getElementById('_calc').value = "ABRIR"
+        document.getElementById('_calc').value = "ABRIR";
     }
     abrir = !abrir;
 });
