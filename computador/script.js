@@ -187,16 +187,15 @@ function calcular_final() {
 
 }
 
- let abrir = false;
+ let abrir = true;
 
     document.getElementById('_calc').addEventListener('click', () => {
-    if(abrir == true){
+    if(abrir == false){
         document.getElementById('calc_total').style.display = "block";
-        abrir = false
         document.getElementById('_calc').value = "FECHAR"
     } else{
         document.getElementById('calc_total').style.display = "none";
-        abrir = true
         document.getElementById('_calc').value = "ABRIR"
     }
+    abrir = !abrir;
 });
