@@ -192,7 +192,7 @@ function calcular_final() {
 
 document.getElementById('_calc').addEventListener('click', () => {
     if (abrir) {
-        document.getElementById('calc_total').style.display = "inli";
+        document.getElementById('calc_total').style.display = "block";
         document.getElementById('_calc').value = "FECHAR";
     } else {
         document.getElementById('calc_total').style.display = "none";
