@@ -34,7 +34,6 @@
             top: 7vh;
             margin-left: 20vw;
         }
-
         strong {
             justify-content: center;
             display: flex;
@@ -46,6 +45,7 @@
         }
         #NCM{
             width: 5vw;
+            text-align: center;
         }
         #select{
             width: 14.2vw;
@@ -67,6 +67,19 @@
             cursor: default;
             height: 0;
         } 
+
+        #quantidade_soma{
+            width: 15vw;
+        }
+        #_calc{
+            font-weight: bold;
+        }
+        #posicao{
+            font-size: 20px;
+        }
+        .titulo{
+            display: flex;
+        }
     </style>
 </head>
 
@@ -79,8 +92,8 @@
 
         <input type="button" value="CALCULAR" id="calcular">
         <input type="reset" value="LIMPAR" id="limpar">
-
-
+        <input type="number" id="quantidade_soma" placeholder="LIM. QNT.ITENS SOMAT." title="LIMITAR QNT. ITENS SOMATORIO">
+        <input type="button" value="ABRIR" id="_calc">
         <br>
         <br>
         <br>
@@ -103,7 +116,6 @@
 
         <br>
         <br>
-        <br>
 
         <label>REDUÇÃO PIS/COFINS: <input type="number" placeholder="PESO - ICMS" id="reducao" readonly></label>
         <label>PIS:<input type="text" id="pis" placeholder="0.65%" readonly></label>
@@ -114,11 +126,25 @@
 
     </form>
     <br>
-    <br>
+    <div id="calc_total">    
+        <hr>        
+        <label class="titulo"><h4>Posição:&nbsp;</h4><p id="posicao"></p></label>
+        <br>
+        <labe>SOMATORIO S/IPI: <input type="number" id="soma_f" value="" placeholder="SOMA DO TOTAL S/IPI" readonly></label>
+        <br>
+        <br>
+        <br>
+        <label>SOMATORIO IPI: <input type="text" id="som_ipi" placeholder="3.25%" readonly></label>
+        <label>SOMATORIO ICMS: <input type="text" id="som_icms" placeholder="18%/12%" readonly></label>
+        <labe>SOMATORIO TOTAL: <input type="number" id="soma_f_comIpi" value="" placeholder="SOMA DO TOTAL COM/IPI" readonly></label>
+        <br>
+        <br>
+        <br>
 
-    <div>
-        <labe>SOMATORIO: <input type="number" id="soma_f" value="" placeholder="SOMA DO TOTAL S/IPI" readonly></label>
-        <input type="button" value="Copiar" id="copiar_somatorio">
+        <label>SOMATORIO REDUÇÃO PIS/COFINS: <input type="number" placeholder="PESO - ICMS" id="soma_pis_cofins" readonly></label>
+        <label>SOMATORIO PIS: <input type="text" id="soma_pis" placeholder="0.65%" readonly></label>
+        <label>SOMATORIO COFINS: <input type="text" id="soma_cofins" placeholder="3%" readonly></label>
+        <!--<input type="button" value="Copiar" id="copiar_somatorio"> -->
     </div>
     <table id="tabela"></table>
 
