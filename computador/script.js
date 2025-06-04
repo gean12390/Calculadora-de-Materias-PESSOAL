@@ -193,8 +193,10 @@ function calcular_final() {
     if(abrir == true){
         document.getElementById('calc_total').style.display = "block";
         abrir = false
+        document.getElementById('_calc').value = "FECHAR"
     } else{
         document.getElementById('calc_total').style.display = "none";
         abrir = true
+        document.getElementById('_calc').value = "ABRIR"
     }
 });
