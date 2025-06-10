@@ -236,19 +236,17 @@ function calcular_final() {
     });
 
     //Div que abre a Calculadora Total
-  function atualiza() {
-    let abre_calculadora = document.getElementById('quantidade_soma');
 
-    if (abre_calculadora.value.trim() === "") {
-        document.getElementById('calc_total').style.display = "none";
-    } else {
-        document.getElementById('calc_total').style.display = "block";
+    function verifica_input(){
+        let abre_calculadora = document.getElementById('quantidade_soma');
+
+        abre_calculadora.addEventListener('input', () => {
+
+        if (abre_calculadora.value.trim() === "") {
+            document.getElementById('calc_total').style.display = "none";
+        } else {
+            document.getElementById('calc_total').style.display = "block";
+
+        }
+    });
     }
-}
-
-function verifica_input() {
-    let abre_calculadora = document.getElementById('quantidade_soma');
-    abre_calculadora.addEventListener('input', atualiza);
-
-    atualiza();
-}
