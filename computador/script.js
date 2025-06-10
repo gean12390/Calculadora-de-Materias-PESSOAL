@@ -7,20 +7,19 @@ import { copiar_ncm } from './ncm.js'
     let j = 0;
     let verdade = true; 
 
+    verifica_input();
 
 //Quando Clicado TAB e esteja no COD. DO MATERIAL, pula direto para o PESO DO MATERIAL
 document.addEventListener('keydown', (event) => {
     if (document.activeElement.id === 'select' && event.key === 'Tab') {
         document.getElementById('limpar').select();
         document.getElementById('quantidade_soma').select();
-        document.getElementById('_calc').select();
     }
 
 });
 
 document.addEventListener('keydown', (event) => {
     if (document.activeElement.id === 'quantidade_soma' && event.key === 'Tab') {
-        document.getElementById('_calc').select();
     }
 
 });
@@ -132,6 +131,7 @@ let limpar_total = document.getElementById('_limpar');
 
 limpar_individual.addEventListener('click', () => {
     document.getElementById("calculadora_individual").reset();
+    verifica_input();
 });
 
 limpar_total.addEventListener('click', () => {
@@ -139,8 +139,6 @@ limpar_total.addEventListener('click', () => {
     soma = 0;
     p = 0;
     document.getElementById('posicao').innerText = `Posição: ${p}`;
-    document.getElementById('posicao').style.display = 'none';
-
     verdade = true;
 });
 
@@ -170,8 +168,6 @@ function calcular_final() {
     let soma_semIpi = document.getElementById('soma_f');
     let soma_ipi = document.getElementById('som_ipi');
     let soma_icms = document.getElementById('som_icms');
-
-    document.getElementById('posicao').innerText = `Posição: ${p}`;
 
     if(verdade == true){
         if(p < quantidade_soma){
@@ -222,6 +218,9 @@ function calcular_final() {
         _soma_pis.value = (0).toFixed(2);
         _soma_cofins.value = (0).toFixed(2); 
     }
+
+        document.getElementById('posicao').innerText = `Posição: ${p}`;
+
 }
     //Apaga o item atual e volta para o anterior
     document.getElementById('_voltar').addEventListener('click', () => {
@@ -237,15 +236,17 @@ function calcular_final() {
     });
 
     //Div que abre a Calculadora Total
- let abrir = false;
 
-document.getElementById('_calc').addEventListener('click', () => {
-    if (abrir) {
-        document.getElementById('calc_total').style.display = "block";
-        document.getElementById('_calc').value = "FECHAR";
-    } else {
-        document.getElementById('calc_total').style.display = "none";
-        document.getElementById('_calc').value = "ABRIR";
+    function verifica_input(){
+        let abre_calculadora = document.getElementById('quantidade_soma');
+
+        abre_calculadora.addEventListener('input', () => {
+
+        if (abre_calculadora.value.trim() === "") {
+            document.getElementById('calc_total').style.display = "none";
+        } else {
+            document.getElementById('calc_total').style.display = "block";
+
+        }
+    });
     }
-    abrir = !abrir;
-});
