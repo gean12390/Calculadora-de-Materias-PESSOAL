@@ -5,6 +5,8 @@ import { copiar_ncm } from './ncm.js'
     let _Ipi = 0;
     let _Icms = 0;
     let j = 0;
+    let verdade = true; 
+
 
 //Quando Clicado TAB e esteja no COD. DO MATERIAL, pula direto para o PESO DO MATERIAL
 document.addEventListener('keydown', (event) => {
@@ -31,6 +33,7 @@ document.getElementById('calcular').addEventListener('click', () => calcular());
 // ATIVA AO CLICAR NA TECLA 'ENTER'
 document.body.addEventListener('keypress', (event) => {
     if (event.key == 'Enter') {
+        verdade = true;
         calcular();
     }
 });
@@ -117,77 +120,123 @@ function calcular() {
         }
     }
 
-
-
 }
 
 //COPIAR O NCM
 copiar_ncm();
 
 // LIMPAR 
-let limpar = document.getElementById('limpar');
+let limpar_individual = document.getElementById('limpar');
+let limpar_total = document.getElementById('_limpar');
 
 
-
-limpar.addEventListener('click', () => {
-    window.location.reload();
-
+limpar_individual.addEventListener('click', () => {
+    document.getElementById("calculadora_individual").reset();
 });
 
+limpar_total.addEventListener('click', () => {
+    document.getElementById("calculadora_total").reset();
+    soma = 0;
+    p = 0;
+    document.getElementById('posicao').innerText = `Posição: ${p}`;
+    document.getElementById('posicao').style.display = 'none';
 
+    verdade = true;
+});
 
-function calcular_final() {
-    let posicao = document.getElementById("posicao");
-    let soma_semIpi = document.getElementById("soma_f");
-    let soma_comIpi = document.getElementById("soma_f_comIpi");
-    let soma_ipi = document.getElementById("som_ipi");
-    let soma_icms = document.getElementById("som_icms");
-    let redu_pis_cofins = document.getElementById("soma_pis_cofins");
-    let redu_pis = document.getElementById("soma_pis");
-    let redu_cofins = document.getElementById("soma_cofins");
-    let Icms = parseFloat(document.getElementById("icms").value);
-    let Ipi = parseFloat(document.getElementById("ipi").value);
-    let quant_soma = parseInt(document.getElementById("quantidade_soma").value);
-    let pesoSemIpi = parseFloat(document.getElementById('peso_total').value);
-    if(j < quant_soma){
-        if(seletor.value == '21'|| seletor.value == '22'|| seletor.value == '20' || seletor.value == '02'){
-        sIpi += pesoSemIpi;
-            if(seletor.value == '21'|| seletor.value == '22'|| seletor.value == '20'){
-                 _Ipi += Ipi; 
-                soma_ipi.value = _Ipi.toFixed(2);
-                
-                if(seletor.value == '21'){
-                    _Icms += Icms;
+    //Sistema Logico para Calculadora Total
 
-                }else if(seletor.value == '22' || seletor.value == '20'){
-                     let Redu = Icms;
-                     let Redu2 = (Redu - (Icms * 0.3333)).toFixed(2);
-                    _Icms += parseFloat(Redu2);
-                }
+    let p = 0;
+    let soma = 0;
+    let ipi = 0;
+    let icms = 0;
+    let _total = 0;
+    let _base_calculo = 0;
+    let _pis = 0;
+    let _cofins = 0;
+    let array_icms = [];
+    let array_ipi = [];
+    let array = [];
+    let soma_total = document.getElementById('soma_f_comIpi');
+    let _reducao = document.getElementById('soma_pis_cofins');
+    let _soma_pis = document.getElementById('soma_pis');
+    let _soma_cofins = document.getElementById('soma_cofins');
 
-            } else if(seletor.value == '02'){
-                 _Ipi += 0;
-                soma_ipi.value = _Ipi;
-                 _Icms += Icms;
-            }
-
-            j++;
-        }
-         soma_semIpi.value = sIpi.toFixed(2);
-         soma_icms.value = ((_Icms).toFixed(2))
-         soma_comIpi.value = ((sIpi + _Ipi).toFixed(2));
-         redu_pis_cofins.value = ((sIpi - _Icms).toFixed(2));
-         redu_pis.value = (((sIpi - _Icms)*0.0065).toFixed(2));
-         redu_cofins.value = (((sIpi - _Icms)*0.03).toFixed(2));
-         document.getElementById('posicao').textContent = `CALCULADORA TOTAL - Posição ${j}` 
-         posicao.value = j;
-
-    }
  
 
+function calcular_final() {
+    //Variaveis
+    let quantidade_soma = parseFloat(document.getElementById('quantidade_soma').value)
+    let soma_semIpi = document.getElementById('soma_f');
+    let soma_ipi = document.getElementById('som_ipi');
+    let soma_icms = document.getElementById('som_icms');
 
+    document.getElementById('posicao').innerText = `Posição: ${p}`;
+
+    if(verdade == true){
+        if(p < quantidade_soma){
+            array[p] = parseFloat(document.getElementById('peso_total').value);
+            soma += array[p];
+
+        if(seletor.value == '21' || seletor.value == '22' || seletor.value == '20'){
+                array_ipi[p] = parseFloat((array[p] * 0.0325).toFixed(2));
+                ipi += parseFloat(array_ipi[p]);
+                    if(seletor.value == '21'){
+                        array_icms[p] = parseFloat((array[p] * 0.18).toFixed(2));
+                        icms += array_icms[p];
+                    } else{
+                        array_icms[p] = parseFloat(((array[p] - (array[p] * 0.3333))* 0.18).toFixed(2));
+                        icms += array_icms[p];
+                    }
+            }else if(seletor.value == '02'){
+                    array_ipi[p] = 0;
+                    ipi += parseFloat(array_ipi[p]);
+                    array_icms[p] = parseFloat((soma * 0.18).toFixed(2));
+                    icms += array_icms[p];
+            }  
+            p++
+        }
+    }
+    //Mostra os valores na Calculadora total
+     _total = (soma + ipi).toFixed(2);
+     soma_total.value = _total;
+     soma_semIpi.value = (soma).toFixed(2);
+     soma_ipi.value = (ipi).toFixed(2); 
+     soma_icms.value = icms.toFixed(2);
+     _base_calculo = (soma - icms);
+     _pis = (_base_calculo * 0.0065);
+     _cofins = (_base_calculo * 0.03);
+     _reducao.value = (_base_calculo).toFixed(2);
+     _soma_pis.value = (_pis).toFixed(2);
+     _soma_cofins.value = (_cofins).toFixed(2);
+     verdade = true; 
+
+     if(soma_semIpi.value == 0){
+        soma_semIpi.value = (0).toFixed(2)
+        soma_total.value = (0).toFixed(2);
+        soma_semIpi.value = (0).toFixed(2);
+        soma_ipi.value = (0).toFixed(2); 
+        soma_icms.value = (0).toFixed(2);
+        _base_calculo = (0).toFixed(2);
+        _reducao.value = (0).toFixed(2);  
+        _soma_pis.value = (0).toFixed(2);
+        _soma_cofins.value = (0).toFixed(2); 
+    }
 }
+    //Apaga o item atual e volta para o anterior
+    document.getElementById('_voltar').addEventListener('click', () => {
+        if(p > 0){
+            verdade = false;
+            array[p] = parseFloat(document.getElementById('peso_total').value);
+            soma -= array[p - 1] || 0;
+            ipi -= array_ipi[p -1] || 0; 
+            icms -= array_icms[p - 1] || 0;
+            p--;
+            calcular_final();
+        }
+    });
 
+    //Div que abre a Calculadora Total
  let abrir = false;
 
 document.getElementById('_calc').addEventListener('click', () => {
